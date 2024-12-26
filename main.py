@@ -50,32 +50,24 @@ searchAmount()
 
 print(Fore.BLUE + logoServerFinder)
 
-i = 0
+color = [Fore.LIGHTBLUE_EX, Fore.CYAN]
+link3check = 'https://discord.gg/'
 
-while i <= int(amnt)-1:
-    color = [Fore.LIGHTBLUE_EX, Fore.CYAN]
-    i += 1
-    char1 = random.choice(alpha)
-    char2 = random.choice(alpha)
-    char3 = random.choice(alpha)
-    char4 = random.choice(alpha)
-    char5 = random.choice(alpha)
-    char6 = random.choice(alpha)
-    char7 = random.choice(alpha)
-    char8 = random.choice(alphaB)
-    link2check = char1 + char2 + char3 + char4 + char5 + char6 + char7 + char8
-    link3check = f"https://discord.gg/{link2check}"
+for i in range(0,amnt+1):
+    for _ in range(0,9):
+        link3check += random.choice(alpha)
+    link3check += random.choice(alphaB)
     req = requests.get(link3check)
     ceq = fromstring(req.content)
     beq = ceq.findtext('.//title')
     if beq != "Discord":
         if beq != "Access Denied":
-            pass
+            print("access denied")
         else:
             wh = discord_webhook.DiscordWebhook(
-                url=r"https://discord.com/api/webhooks/1321634087009652816/7NMidp2y0j4GpRSgvPbv6LcR1nvFrvSGX10riiWJ4Hp77EtDFQwGRElLnx85qMkDYEJl",
-                content=link3check)
+                 url=r"https://discord.com/api/webhooks/1321634087009652816/7NMidp2y0j4GpRSgvPbv6LcR1nvFrvSGX10riiWJ4Hp77EtDFQwGRElLnx85qMkDYEJl",
+                 ontent=link3check)
             wh.execute()
-    else:
-        ...
+        else:
+            ...
     print(f"{random.choice(color)}{link3check} | {beq} | {i}")
