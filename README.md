@@ -6,9 +6,10 @@ if so it sends the valid link through my webhook 2 my server i got (ya this prol
 anyawys thanks for reading audios
 
 # libraries
-uhh shoutout to these guys
-colorama
-random library ofc
-discord_webhook
-requests
+uhh shoutout to these guys:
+colorama,
+random library ofc,
+discord_webhook,
+requests,
+and
 lxml
