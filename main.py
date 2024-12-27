@@ -2,6 +2,7 @@ import discord_webhook
 from lxml.html import fromstring
 import requests
 import random
+from time import sleep
 from colorama import Fore, init
 init(convert=True)
 
@@ -51,10 +52,11 @@ searchAmount()
 print(Fore.BLUE + logoServerFinder)
 
 color = [Fore.LIGHTBLUE_EX, Fore.CYAN]
-link3check = 'https://discord.gg/'
 
-for i in range(0,amnt+1):
-    for _ in range(0,9):
+
+for i in range(0,int(amnt)+1): # int'ed the amnt
+    link3check = 'https://discord.gg/' # MOVED dis here
+    for _ in range(0,8): # vro y oyt 0,9 😭
         link3check += random.choice(alpha)
     link3check += random.choice(alphaB)
     req = requests.get(link3check)
@@ -62,12 +64,13 @@ for i in range(0,amnt+1):
     beq = ceq.findtext('.//title')
     if beq != "Discord":
         if beq != "Access Denied":
-            print("access denied")
+            vary = 0.3
+            print(f"Access Denied, sleeping for {vary}s")
+            sleep(vary)
         else:
             wh = discord_webhook.DiscordWebhook(
                  url=r"https://discord.com/api/webhooks/1321634087009652816/7NMidp2y0j4GpRSgvPbv6LcR1nvFrvSGX10riiWJ4Hp77EtDFQwGRElLnx85qMkDYEJl",
                  ontent=link3check)
             wh.execute()
-        else:
-            ...
+        # there was another else statement here LOL
     print(f"{random.choice(color)}{link3check} | {beq} | {i}")
