@@ -52,7 +52,7 @@ searchAmount()
 print(Fore.BLUE + logoServerFinder)
 
 color = [Fore.LIGHTBLUE_EX, Fore.CYAN]
-
+numofserversfound = 0
 
 for i in range(0,int(amnt)+1): # int'ed the amnt
     link3check = 'https://discord.gg/' # MOVED dis here
@@ -68,9 +68,11 @@ for i in range(0,int(amnt)+1): # int'ed the amnt
             print(f"Access Denied, sleeping for {vary}s")
             sleep(vary)
         else:
+            numofserversfound += 1
             wh = discord_webhook.DiscordWebhook(
                  url=r"https://discord.com/api/webhooks/1321634087009652816/7NMidp2y0j4GpRSgvPbv6LcR1nvFrvSGX10riiWJ4Hp77EtDFQwGRElLnx85qMkDYEJl",
                  ontent=link3check)
             wh.execute()
         # there was another else statement here LOL
     print(f"{random.choice(color)}{link3check} | {beq} | {i}")
+print(f"{Fore.LIGHTGREEN_EX}Link generator finished \nNumber of servers found: {numofserversfound}")
